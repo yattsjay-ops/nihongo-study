@@ -1,0 +1,219 @@
+body {
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+
+    background-color: #f3ead8;
+    color: #222;
+}
+h1 {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin: 10px 0;
+    color: #1f1f1f;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: #9e1b1b;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header-image {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    border: 3px solid #222;
+    border-radius: 4px;
+
+    box-shadow: 8px 8px 0px #222;
+
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #9e1b1b;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 10px 0;
+    color: #1f1f1f;
+}
+
+.subtitle {
+    color: #5f574d;
+    font-size: 17px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+input {
+    width: 100%;
+    padding: 17px 20px;
+    box-sizing: border-box;
+
+    font-size: 16px;
+
+    background-color: #fffdf7;
+
+    border: 3px solid #222;
+    border-radius: 4px;
+
+    outline: none;
+
+    margin-bottom: 30px;
+}
+
+input:focus {
+    border-color: #9e1b1b;
+}
+
+
+/* =========================
+   VOCABULARY CARD
+========================= */
+
+.vocabulary {
+    background-color: #fffdf7;
+
+    padding: 18px;
+    margin-bottom: 14px;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    box-shadow: 4px 4px 0px #222;
+
+    transition: transform 0.2s;
+}
+
+.vocabulary:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Efek saat mouse diarahkan ke kartu */
+
+.vocabulary:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   KANJI
+========================= */
+
+.vocabulary h3 {
+    font-size: 32px;
+    margin: 0 0 6px 0;
+
+    color: #9e1b1b;
+}
+
+
+/* Hiragana */
+
+.vocabulary p:nth-child(2) {
+    font-size: 17px;
+    margin: 4px 0;
+
+    color: #333;
+}
+
+
+/* Romaji */
+
+.vocabulary p:nth-child(3) {
+    margin: 5px 0;
+
+    color: #777;
+
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+/* Arti */
+
+.vocabulary p:nth-child(4) {
+    margin-top: 8px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    color: #222;
+}
+.category {
+    background-color: #fffdf7;
+
+    padding: 20px;
+    margin-bottom: 15px;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    box-shadow: 5px 5px 0px #222;
+
+    cursor: pointer;
+
+    transition: transform 0.2s;
+}
+
+.category:hover {
+    transform: translateY(-3px);
+}
+
+.category h2 {
+    margin: 0 0 5px 0;
+
+    font-size: 24px;
+
+    color: #9e1b1b;
+}
+
+.category p {
+    margin: 0;
+
+    color: #666;
+}
+
+#backButton {
+    padding: 10px 16px;
+
+    margin-bottom: 20px;
+
+    background-color: #fffdf7;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    font-family: inherit;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#backButton:hover {
+    background-color: #eee5d5;
+}

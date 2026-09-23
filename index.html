@@ -1,0 +1,139 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Nihongo Study</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<header>
+
+    <img
+        src="YUZUKI NANASE.png"
+        alt="Japanese Manga Header"
+        class="header-image"
+    >
+
+    <p class="logo">
+        🌸 Jayot Nganjut
+    </p>
+
+    <h1>
+        Belajar Bahasa Jepang
+    </h1>
+
+    <p class="subtitle">
+        Mari kita nganjut lewat manga & anime.
+    </p>
+
+</header>
+
+
+<!-- SEARCH -->
+
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Cari Ungkapan"
+>
+
+
+<!-- FOLDER KATEGORI -->
+
+<div id="categoryList"></div>
+
+
+<!-- VOCABULARY -->
+
+<div id="vocabularySection" style="display: none;">
+
+    <button id="backButton">
+        ← Kembali ke Folder
+    </button>
+
+    <h2>
+        Vocabulary
+    </h2>
+
+
+    <!-- TOMBOL TAMBAH -->
+
+    <button id="addVocabularyButton">
+        ＋ Tambah Kosakata
+    </button>
+
+
+    <!-- FORM TAMBAH -->
+
+    <div
+        id="addVocabularyForm"
+        style="display: none;"
+    >
+
+        <input
+            type="text"
+            id="kanjiInput"
+            placeholder="Kanji"
+        >
+
+        <input
+            type="text"
+            id="hiraganaInput"
+            placeholder="Hiragana"
+        >
+
+        <input
+            type="text"
+            id="romajiInput"
+            placeholder="Romaji"
+        >
+
+        <input
+            type="text"
+            id="artiInput"
+            placeholder="Arti"
+        >
+
+        <br><br>
+
+        <button id="saveVocabularyButton">
+            Simpan
+        </button>
+
+        <button id="cancelVocabularyButton">
+            Batal
+        </button>
+
+    </div>
+
+
+    <!-- DAFTAR VOCABULARY -->
+
+    <div id="vocabularyList"></div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
