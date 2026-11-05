@@ -7,20 +7,7 @@ body {
     background-color: #f3ead8;
     color: #222;
 }
-h1 {
-    font-size: 48px;
-    font-weight: 900;
-    letter-spacing: -2px;
-    margin: 10px 0;
-    color: #1f1f1f;
-}
 
-.logo {
-    font-size: 22px;
-    font-weight: 900;
-    color: #9e1b1b;
-    letter-spacing: 2px;
-}
 
 /* =========================
    HEADER
@@ -48,13 +35,17 @@ header {
 .logo {
     font-size: 22px;
     font-weight: bold;
+
     color: #9e1b1b;
+
     letter-spacing: 1px;
 }
 
 h1 {
     font-size: 42px;
+
     margin: 10px 0;
+
     color: #1f1f1f;
 }
 
@@ -68,11 +59,13 @@ h1 {
    SEARCH
 ========================= */
 
-input {
+#searchInput {
     width: 100%;
     padding: 17px 20px;
+
     box-sizing: border-box;
 
+    font-family: inherit;
     font-size: 16px;
 
     background-color: #fffdf7;
@@ -85,85 +78,15 @@ input {
     margin-bottom: 30px;
 }
 
-input:focus {
+#searchInput:focus {
     border-color: #9e1b1b;
 }
 
 
 /* =========================
-   VOCABULARY CARD
+   CATEGORY / FOLDER
 ========================= */
 
-.vocabulary {
-    background-color: #fffdf7;
-
-    padding: 18px;
-    margin-bottom: 14px;
-
-    border: 2px solid #222;
-    border-radius: 4px;
-
-    box-shadow: 4px 4px 0px #222;
-
-    transition: transform 0.2s;
-}
-
-.vocabulary:hover {
-    transform: translateY(-3px);
-}
-
-
-/* Efek saat mouse diarahkan ke kartu */
-
-.vocabulary:hover {
-    transform: translateY(-3px);
-}
-
-
-/* =========================
-   KANJI
-========================= */
-
-.vocabulary h3 {
-    font-size: 32px;
-    margin: 0 0 6px 0;
-
-    color: #9e1b1b;
-}
-
-
-/* Hiragana */
-
-.vocabulary p:nth-child(2) {
-    font-size: 17px;
-    margin: 4px 0;
-
-    color: #333;
-}
-
-
-/* Romaji */
-
-.vocabulary p:nth-child(3) {
-    margin: 5px 0;
-
-    color: #777;
-
-    font-size: 14px;
-    font-style: italic;
-}
-
-
-/* Arti */
-
-.vocabulary p:nth-child(4) {
-    margin-top: 8px;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    color: #222;
-}
 .category {
     background-color: #fffdf7;
 
@@ -198,6 +121,24 @@ input:focus {
     color: #666;
 }
 
+
+/* =========================
+   VOCABULARY SECTION
+========================= */
+
+#vocabularySection h2 {
+    margin-bottom: 20px;
+
+    font-size: 28px;
+
+    color: #1f1f1f;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
 #backButton {
     padding: 10px 16px;
 
@@ -216,4 +157,270 @@ input:focus {
 
 #backButton:hover {
     background-color: #eee5d5;
+}
+
+
+/* =========================
+   TOMBOL TAMBAH VOCABULARY
+========================= */
+
+#addVocabularyButton {
+    padding: 8px 13px;
+
+    margin-bottom: 15px;
+
+    background-color: #fffdf7;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#addVocabularyButton:hover {
+    background-color: #eee5d5;
+}
+
+
+/* =========================
+   FORM TAMBAH
+========================= */
+
+#addVocabularyForm {
+    max-width: 420px;
+
+    padding: 16px;
+    margin: 15px auto;
+
+    background-color: #fffdf7;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    box-shadow: 5px 5px 0px #222;
+}
+
+#addVocabularyForm h3 {
+    font-size: 18px;
+
+    margin: 0 0 12px 0;
+
+    color: #9e1b1b;
+}
+
+#addVocabularyForm input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px 10px;
+    margin-bottom: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    background-color: #fff;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    outline: none;
+}
+
+#addVocabularyForm input:focus {
+    border-color: #9e1b1b;
+}
+
+
+/* =========================
+   TOMBOL FORM TAMBAH
+========================= */
+
+#addVocabularyForm button {
+    padding: 7px 11px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+
+    background-color: #fffdf7;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+#addVocabularyForm button:hover {
+    background-color: #eee5d5;
+}
+
+
+/* =========================
+   VOCABULARY CARD
+========================= */
+
+.vocabulary {
+    max-width: 420px;
+
+    padding: 16px;
+    margin: 12px auto 0;
+
+    background-color: #fffdf7;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    box-shadow: 5px 5px 0px #222;
+
+    transition: transform 0.2s;
+}
+
+.vocabulary:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   KANJI
+========================= */
+
+.vocabulary h3 {
+    font-size: 28px;
+
+    margin: 0 0 8px 0;
+
+    color: #9e1b1b;
+}
+
+
+/* =========================
+   ISI VOCABULARY
+========================= */
+
+.vocabulary p {
+    font-size: 14px;
+
+    margin: 5px 0;
+
+    color: #333;
+}
+
+
+/* =========================
+   TOMBOL EDIT & HAPUS
+========================= */
+
+.vocabulary-actions {
+    margin-top: 12px;
+}
+
+.vocabulary-actions button {
+    padding: 7px 11px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+
+    background-color: #fffdf7;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.vocabulary-actions button:hover {
+    background-color: #eee5d5;
+}
+
+
+/* =========================
+   FORM EDIT DI DALAM CARD
+========================= */
+
+.vocabulary input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px 10px;
+    margin-bottom: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    background-color: #fff;
+
+    border: 2px solid #222;
+    border-radius: 4px;
+
+    outline: none;
+}
+
+.vocabulary input:focus {
+    border-color: #9e1b1b;
+}
+
+
+/* =========================
+   PESAN KOSONG
+========================= */
+
+.empty-message {
+    text-align: center;
+
+    color: #666;
+
+    margin: 30px 0;
+}
+
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 15px;
+    }
+
+    .header-image {
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .vocabulary {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #addVocabularyForm {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .category {
+        padding: 16px;
+    }
+
+    .category h2 {
+        font-size: 21px;
+    }
 }
