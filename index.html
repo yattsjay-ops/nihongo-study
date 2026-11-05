@@ -58,7 +58,36 @@
 <!-- FOLDER KATEGORI -->
 
 <div id="categoryList"></div>
- </button>
+
+<!-- TOMBOL KUIS -->
+
+<button id="openQuizButton">
+    🎯 Kuis Interaktif
+</button>
+
+<!-- BAGIAN KUIS -->
+
+<div id="quizSection" style="display: none;">
+
+    <button id="backFromQuizButton">
+        ← Kembali ke Beranda
+    </button>
+
+    <h2>🎯 Kuis Kanji</h2>
+
+    <p>Uji pemahaman kosakata bahasa Jepangmu!</p>
+
+    <label for="quizCategorySelect">
+        Pilih kategori:
+    </label>
+
+    <select id="quizCategorySelect">
+        <option value="all">Semua Kategori</option>
+    </select>
+
+    <button id="startQuizButton">
+        Mulai Kuis
+    </button>
 
     <div id="quizCard" style="display: none;">
 
@@ -79,7 +108,6 @@
     <div id="quizResult" style="display: none;"></div>
 
 </div>
-
 <!-- VOCABULARY -->
 
 <div id="vocabularySection" style="display: none;">
