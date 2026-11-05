@@ -125,7 +125,7 @@ function simpanData() {
         alert("Gagal menyimpan kosakata. Periksa Console untuk melihat penyebabnya.");
         return false;
     }
-
+}
 
 // ==========================================
 // KUIS INTERAKTIF
