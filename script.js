@@ -155,6 +155,350 @@ function simpanData() {
 
 
 // ==========================================
+// KUIS INTERAKTIF
+// ==========================================
+
+const openQuizButton =
+    document.getElementById("openQuizButton");
+
+const quizSection =
+    document.getElementById("quizSection");
+
+const backFromQuizButton =
+    document.getElementById("backFromQuizButton");
+
+const quizCategorySelect =
+    document.getElementById("quizCategorySelect");
+
+const startQuizButton =
+    document.getElementById("startQuizButton");
+
+const quizCard =
+    document.getElementById("quizCard");
+
+const quizProgress =
+    document.getElementById("quizProgress");
+
+const quizQuestion =
+    document.getElementById("quizQuestion");
+
+const quizOptions =
+    document.getElementById("quizOptions");
+
+const quizFeedback =
+    document.getElementById("quizFeedback");
+
+const nextQuizButton =
+    document.getElementById("nextQuizButton");
+
+const quizResult =
+    document.getElementById("quizResult");
+
+let quizQuestions = [];
+let quizPool = [];
+let quizCurrentIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+
+// ==========================================
+// ACAK DATA
+// ==========================================
+
+function acakData(data) {
+    return [...data].sort(() => Math.random() - 0.5);
+}
+
+
+// ==========================================
+// ISI PILIHAN KATEGORI
+// ==========================================
+
+function isiPilihanKategori() {
+
+    quizCategorySelect.innerHTML =
+        '<option value="all">Semua Kategori</option>';
+
+    categories.forEach(function(category, index) {
+
+        const option = document.createElement("option");
+
+        option.value = index;
+        option.textContent = category.nama;
+
+        quizCategorySelect.appendChild(option);
+
+    });
+
+}
+
+isiPilihanKategori();
+
+
+// ==========================================
+// BUKA MENU KUIS
+// ==========================================
+
+openQuizButton.addEventListener("click", function() {
+
+    categoryList.style.display = "none";
+    vocabularySection.style.display = "none";
+    quizSection.style.display = "block";
+
+    searchInput.style.display = "none";
+
+    quizCard.style.display = "none";
+    quizResult.style.display = "none";
+
+});
+
+
+// ==========================================
+// KEMBALI DARI KUIS
+// ==========================================
+
+backFromQuizButton.addEventListener("click", function() {
+
+    quizSection.style.display = "none";
+
+    categoryList.style.display = "grid";
+    searchInput.style.display = "block";
+
+    quizCard.style.display = "none";
+    quizResult.style.display = "none";
+
+});
+
+
+// ==========================================
+// MULAI KUIS
+// ==========================================
+
+startQuizButton.addEventListener("click", function() {
+
+    const pilihan = quizCategorySelect.value;
+
+    if (pilihan === "all") {
+
+        quizPool = categories.flatMap(function(category) {
+            return category.kosakata;
+        });
+
+    } else {
+
+        quizPool = categories[Number(pilihan)].kosakata;
+
+    }
+
+    // Hanya gunakan kosakata yang memiliki kanji dan arti
+    quizPool = quizPool.filter(function(item) {
+        return item.kanji && item.arti;
+    });
+
+    // Pastikan tersedia minimal 3 arti berbeda
+    const artiUnik = [...new Set(
+        quizPool.map(item => item.arti)
+    )];
+
+    if (artiUnik.length < 3) {
+
+        alert("Tambahkan minimal 3 kosakata dengan arti berbeda untuk memulai kuis.");
+
+        return;
+
+    }
+
+    // Maksimal 5 soal dalam satu sesi
+    quizQuestions = acakData(quizPool).slice(
+        0,
+        Math.min(5, quizPool.length)
+    );
+
+    quizCurrentIndex = 0;
+    quizScore = 0;
+
+    quizResult.style.display = "none";
+    quizCard.style.display = "block";
+
+    tampilkanSoal();
+
+});
+
+
+// ==========================================
+// TAMPILKAN SOAL
+// ==========================================
+
+function tampilkanSoal() {
+
+    quizAnswered = false;
+
+    const soal = quizQuestions[quizCurrentIndex];
+
+    quizProgress.textContent =
+        "Soal " + (quizCurrentIndex + 1) +
+        " dari " + quizQuestions.length;
+
+    quizQuestion.textContent = soal.kanji;
+
+    quizFeedback.textContent = "";
+
+    quizOptions.innerHTML = "";
+
+    nextQuizButton.style.display = "none";
+
+    // Ambil pilihan arti yang berbeda
+    const pilihanSalah = [...new Set(
+        quizPool
+            .map(item => item.arti)
+            .filter(arti => arti && arti !== soal.arti)
+    )];
+
+    const pilihanJawaban = acakData([
+        soal.arti,
+        ...acakData(pilihanSalah).slice(0, 3)
+    ]);
+
+    pilihanJawaban.forEach(function(jawaban) {
+
+        const button = document.createElement("button");
+
+        button.className = "quiz-option";
+        button.textContent = jawaban;
+
+        button.addEventListener("click", function() {
+
+            periksaJawaban(button, jawaban, soal.arti);
+
+        });
+
+        quizOptions.appendChild(button);
+
+    });
+
+}
+
+
+// ==========================================
+// PERIKSA JAWABAN
+// ==========================================
+
+function periksaJawaban(button, jawaban, jawabanBenar) {
+
+    if (quizAnswered) return;
+
+    quizAnswered = true;
+
+    const semuaPilihan =
+        quizOptions.querySelectorAll(".quiz-option");
+
+    semuaPilihan.forEach(function(option) {
+
+        option.disabled = true;
+
+        if (option.textContent === jawabanBenar) {
+            option.classList.add("correct");
+        }
+
+    });
+
+    if (jawaban === jawabanBenar) {
+
+        quizScore++;
+
+        quizFeedback.textContent = "Benar! 🎉";
+
+    } else {
+
+        button.classList.add("incorrect");
+
+        quizFeedback.textContent =
+            "Belum tepat. Jawaban yang benar adalah: " +
+            jawabanBenar;
+
+    }
+
+    if (quizCurrentIndex === quizQuestions.length - 1) {
+
+        nextQuizButton.textContent = "Lihat Hasil";
+
+    } else {
+
+        nextQuizButton.textContent = "Soal Berikutnya";
+
+    }
+
+    nextQuizButton.style.display = "inline-block";
+
+}
+
+
+// ==========================================
+// SOAL BERIKUTNYA
+// ==========================================
+
+nextQuizButton.addEventListener("click", function() {
+
+    quizCurrentIndex++;
+
+    if (quizCurrentIndex < quizQuestions.length) {
+
+        tampilkanSoal();
+
+    } else {
+
+        tampilkanHasilKuis();
+
+    }
+
+});
+
+
+// ==========================================
+// HASIL KUIS
+// ==========================================
+
+function tampilkanHasilKuis() {
+
+    quizCard.style.display = "none";
+
+    quizResult.style.display = "block";
+
+    const totalSoal = quizQuestions.length;
+
+    const jumlahSalah = totalSoal - quizScore;
+
+    const nilai = Math.round(
+        (quizScore / totalSoal) * 100
+    );
+
+    quizResult.innerHTML = `
+        <h2>🎉 Kuis Selesai!</h2>
+
+        <h1>${nilai}</h1>
+
+        <p>Nilai kamu</p>
+
+        <p>✅ Jawaban benar: ${quizScore}</p>
+
+        <p>❌ Jawaban salah: ${jumlahSalah}</p>
+
+        <p>📚 Total soal: ${totalSoal}</p>
+
+        <button id="ulangKuisButton">
+            🔄 Ulangi Kuis
+        </button>
+    `;
+
+    document.getElementById("ulangKuisButton")
+        .addEventListener("click", function() {
+
+            startQuizButton.click();
+
+        });
+
+}
+// ==========================================
 // TAMPILKAN KATEGORI
 // ==========================================
 
