@@ -1115,266 +1115,152 @@ backButton.addEventListener(
 // SEARCH
 // ==========================================
 
-searchInput.addEventListener(
-    "input",
-    function() {
+searchInput.addEventListener("input", function() {
 
-        const keyword =
-            searchInput.value
-                .toLowerCase()
-                .trim();
+    const keyword = searchInput.value
+        .toLowerCase()
+        .trim();
 
+    // Jika pencarian kosong
+    if (keyword === "") {
 
-        // Jika pencarian kosong
+        vocabularySection.style.display = "none";
+        addVocabularyForm.style.display = "none";
 
-        if (keyword === "") {
+        if (currentCategoryIndex !== null) {
 
-            if (
-                currentCategoryIndex !== null
-            ) {
+            tampilkanVocabulary(
+                categories[currentCategoryIndex].kosakata
+            );
 
-                tampilkanVocabulary(
-                    categories[
-                        currentCategoryIndex
-                    ].kosakata
-                );
+            vocabularySection.style.display = "block";
+            categoryList.style.display = "none";
 
-            }
-            else {
+        } else {
 
-                tampilkanKategori();
+            tampilkanKategori();
 
-                vocabularySection.style.display =
-                    "none";
-
-                categoryList.style.display =
-                    "block";
-
-            }
-
-            return;
+            categoryList.style.display = "grid";
 
         }
 
-
-        // ==================================
-        // CARI SEMUA VOCABULARY
-        // ==================================
-
-        const hasilPencarian = [];
-
-
-        categories.forEach(
-            function(category, categoryIndex) {
-
-                category.kosakata.forEach(
-                    function(item, vocabularyIndex) {
-
-                        const cocok =
-
-                            (item.kanji || "")
-                                .toLowerCase()
-                                .includes(keyword)
-
-                            ||
-
-                            (item.onyomi || "")
-                                .toLowerCase()
-                                .includes(keyword)
-
-                            ||
-
-                            (item.kunyomi || "")
-                                .toLowerCase()
-                                .includes(keyword)
-
-                            ||
-
-                            (item.romaji || "")
-                                .toLowerCase()
-                                .includes(keyword)
-
-                            ||
-
-                            (item.arti || "")
-                                .toLowerCase()
-                                .includes(keyword);
-
-
-                        if (cocok) {
-
-                            hasilPencarian.push({
-
-                                item:
-                                    item,
-
-                                categoryIndex:
-                                    categoryIndex,
-
-                                vocabularyIndex:
-                                    vocabularyIndex
-
-                            });
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-
-        // ==================================
-        // TAMPILKAN HASIL
-        // ==================================
-
-        categoryList.style.display =
-            "none";
-
-        vocabularySection.style.display =
-            "block";
-
-        addVocabularyForm.style.display =
-            "none";
-
-        vocabularyList.innerHTML = "";
-
-
-        if (
-            hasilPencarian.length === 0
-        ) {
-
-            vocabularyList.innerHTML = `
-                <p class="empty-message">
-                    Kosakata tidak ditemukan.
-                </p>
-            `;
-
-            return;
-        }
-
-
-        hasilPencarian.forEach(
-            function(result) {
-
-                const item =
-                    result.item;
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "vocabulary";
-
-
-                card.innerHTML = `
-
-                    <h3>
-                        ${item.kanji}
-                    </h3>
-
-                    <p>
-                        <strong>Onyomi:</strong>
-                        ${item.onyomi || "-"}
-                    </p>
-
-                    <p>
-                        <strong>Kunyomi:</strong>
-                        ${item.kunyomi || "-"}
-                    </p>
-
-                    <p>
-                        <strong>Romaji:</strong>
-                        ${item.romaji || "-"}
-                    </p>
-
-                    <p>
-                        <strong>Arti:</strong>
-                        ${item.arti || "-"}
-                    </p>
-
-                    <p>
-                        <strong>Jumlah goresan:</strong>
-                        ${item.goresan || "-"}
-                    </p>
-
-                    <small>
-                        📁
-                        ${categories[
-                            result.categoryIndex
-                        ].nama}
-                    </small>
-
-                    <div class="vocabulary-actions">
-
-                        <button class="edit-button">
-                            ✏️ Edit
-                        </button>
-
-                        <button class="delete-button">
-                            🗑️ Hapus
-                        </button>
-
-                    </div>
-                `;
-
-
-                // ==================================
-                // EDIT DARI SEARCH
-                // ==================================
-
-                card.querySelector(
-                    ".edit-button"
-                ).addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        currentCategoryIndex =
-                            result.categoryIndex;
-
-                        tampilkanFormEdit(
-                            card,
-                            item,
-                            result.vocabularyIndex
-                        );
-
-                    }
-                );
-
-
-                // ==================================
-                // HAPUS DARI SEARCH
-                // ==================================
-
-                card.querySelector(
-                    ".delete-button"
-                ).addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.stopPropagation();
-
-                        currentCategoryIndex =
-                            result.categoryIndex;
-
-                        hapusVocabulary(
-                            result.vocabularyIndex
-                        );
-
-                    }
-                );
-
-
-                vocabularyList.appendChild(card);
-
-            }
-        );
-
+        return;
     }
-);
+
+    // ==================================
+    // CARI SEMUA VOCABULARY
+    // ==================================
+
+    const hasilPencarian = [];
+
+    categories.forEach(function(category, categoryIndex) {
+
+        category.kosakata.forEach(function(item, vocabularyIndex) {
+
+            const cocok =
+                (item.kanji || "").toLowerCase().includes(keyword) ||
+                (item.onyomi || "").toLowerCase().includes(keyword) ||
+                (item.kunyomi || "").toLowerCase().includes(keyword) ||
+                (item.romaji || "").toLowerCase().includes(keyword) ||
+                (item.arti || "").toLowerCase().includes(keyword);
+
+            if (cocok) {
+
+                hasilPencarian.push({
+                    item: item,
+                    categoryIndex: categoryIndex,
+                    vocabularyIndex: vocabularyIndex
+                });
+
+            }
+
+        });
+
+    });
+
+    // ==================================
+    // TAMPILKAN HASIL
+    // ==================================
+
+    categoryList.style.display = "none";
+    vocabularySection.style.display = "block";
+    addVocabularyForm.style.display = "none";
+
+    vocabularyList.innerHTML = "";
+
+    if (hasilPencarian.length === 0) {
+
+        vocabularyList.innerHTML = `
+            <p class="empty-message">
+                Kosakata tidak ditemukan.
+            </p>
+        `;
+
+        return;
+    }
+
+    hasilPencarian.forEach(function(result) {
+
+        const item = result.item;
+
+        const card = document.createElement("div");
+
+        card.className = "vocabulary";
+
+        card.innerHTML = `
+            <h3>${item.kanji}</h3>
+
+            <p><strong>Onyomi:</strong> ${item.onyomi || "-"}</p>
+
+            <p><strong>Kunyomi:</strong> ${item.kunyomi || "-"}</p>
+
+            <p><strong>Romaji:</strong> ${item.romaji || "-"}</p>
+
+            <p><strong>Arti:</strong> ${item.arti || "-"}</p>
+
+            <p><strong>Jumlah goresan:</strong> ${item.goresan || "-"}</p>
+
+            <small>
+                📁 ${categories[result.categoryIndex].nama}
+            </small>
+
+            <div class="vocabulary-actions">
+                <button class="edit-button">✏️ Edit</button>
+                <button class="delete-button">🗑️ Hapus</button>
+            </div>
+        `;
+
+        // EDIT DARI SEARCH
+        card.querySelector(".edit-button").addEventListener("click", function(event) {
+
+            event.stopPropagation();
+
+            currentCategoryIndex = result.categoryIndex;
+
+            tampilkanFormEdit(
+                card,
+                item,
+                result.vocabularyIndex
+            );
+
+        });
+
+        // HAPUS DARI SEARCH
+        card.querySelector(".delete-button").addEventListener("click", function(event) {
+
+            event.stopPropagation();
+
+            currentCategoryIndex = result.categoryIndex;
+
+            hapusVocabulary(result.vocabularyIndex);
+
+        });
+
+        vocabularyList.appendChild(card);
+
+    });
+
+});
 
 
 // ==========================================
