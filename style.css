@@ -1,10 +1,9 @@
 body {
-    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-family: 'Kosugi Maru', sans-serif;
     max-width: 1000px;
     margin: auto;
     padding: 40px 20px;
-
-    background-color: #f3ead8;
+    background: #f3ead8;
     color: #222;
 }
 
