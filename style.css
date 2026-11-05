@@ -614,3 +614,6 @@ h1 {
         padding: 18px;
     }
 }
+body {
+    background: red !important;
+}
