@@ -828,6 +828,7 @@ searchInput.addEventListener("input", function() {
 // ==========================================
 // JALANKAN WEBSITE
 // ==========================================
-
-tampilkanKategori();
-}
+document.addEventListener("DOMContentLoaded", function() {
+    tampilkanKategori();
+    categoryList.style.display = "grid";
+});
