@@ -424,3 +424,124 @@ h1 {
         font-size: 21px;
     }
 }
+/* ==========================================
+   KUIS INTERAKTIF
+========================================== */
+
+#openQuizButton {
+    display: block;
+    margin: 20px auto;
+    padding: 13px 25px;
+    background-color: #9e1b1b;
+    color: white;
+    border: 2px solid #222;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #222;
+}
+
+#quizSection {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #fffdf7;
+    border: 2px solid #222;
+    border-radius: 10px;
+    box-shadow: 6px 6px 0 #222;
+    text-align: center;
+}
+
+#quizSection h2 {
+    color: #9e1b1b;
+}
+
+#quizCategorySelect {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+#startQuizButton,
+#nextQuizButton,
+#backFromQuizButton {
+    padding: 11px 18px;
+    margin: 10px 5px;
+    border: 2px solid #222;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#quizQuestion {
+    font-size: 65px;
+    margin: 25px 0;
+    color: #9e1b1b;
+}
+
+#quizOptions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.quiz-option {
+    padding: 15px;
+    background: #f3ead8;
+    border: 2px solid #222;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.quiz-option:hover:not(:disabled) {
+    background: #ead5b4;
+}
+
+.quiz-option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.quiz-option.correct {
+    background: #c8e6c9;
+    border-color: #287a35;
+}
+
+.quiz-option.incorrect {
+    background: #ffcdd2;
+    border-color: #b71c1c;
+}
+
+#quizFeedback {
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+#quizResult h1 {
+    font-size: 60px;
+    color: #9e1b1b;
+}
+
+#ulangKuisButton {
+    padding: 12px 20px;
+    background: #9e1b1b;
+    color: white;
+    border: 2px solid #222;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    #quizOptions {
+        grid-template-columns: 1fr;
+    }
+
+    #quizQuestion {
+        font-size: 50px;
+    }
+}
