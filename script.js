@@ -1098,7 +1098,7 @@ backButton.addEventListener(
             "none";
 
         categoryList.style.display =
-            "block";
+            "grid";
 
         searchInput.value = "";
 
