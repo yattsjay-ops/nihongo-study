@@ -111,11 +111,20 @@ let currentCategoryIndex = null;
 // ==========================================
 
 function simpanData() {
-    localStorage.setItem(
-        "nihongoStudyData",
-        JSON.stringify(categories)
-    );
-}
+    try {
+        localStorage.setItem(
+            "nihongoStudyData",
+            JSON.stringify(categories)
+        );
+
+        console.log("Data berhasil disimpan:", categories);
+        return true;
+
+    } catch (error) {
+        console.error("Gagal menyimpan data:", error);
+        alert("Gagal menyimpan kosakata. Periksa Console untuk melihat penyebabnya.");
+        return false;
+    }
 
 
 // ==========================================
