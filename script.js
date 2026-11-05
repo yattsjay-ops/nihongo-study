@@ -830,3 +830,4 @@ searchInput.addEventListener("input", function() {
 // ==========================================
 
 tampilkanKategori();
+}
