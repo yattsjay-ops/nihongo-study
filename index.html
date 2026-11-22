@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nihongo Study</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <img
+            src="YUZUKI NANASE.png"
+            alt="Japanese Manga Header"
+            class="header-image"
+        >
+
+        <p class="logo">
+            🌸 Jikan
+        </p>
+
+        <h1>
+            Belajar Bahasa Jepang
+        </h1>
+
+        <p class="subtitle">
+            Waktu dan kegiatannya
+        </p>
+
+    </header>
+
+
+    <!-- SEARCH -->
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari Kosakata"
+    >
+
+
+    <!-- FOLDER KATEGORI -->
+
+    <div id="categoryList"></div>
+
+
+    <!-- VOCABULARY -->
+
+    <div id="vocabularySection" style="display: none;">
+
+        <button id="backButton">
+            ← Kembali ke Folder
+        </button>
+
+        <h2>
+            Vocabulary
+        </h2>
+
+        <div id="vocabularyList"></div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
